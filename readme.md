@@ -7,7 +7,7 @@
 - HDBSCAN for clustering
 
 
-![Website Page Embeddings Visualization](page_embedding_visualization_2d.png)
+![Website Page Embeddings Visualization](./page_embedding_visualization_2d.png)
 
 
 ### Input
