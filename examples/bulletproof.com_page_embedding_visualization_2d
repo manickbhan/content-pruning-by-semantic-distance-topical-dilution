@@ -1,0 +1,301 @@
+# Install necessary libraries (only needed once)
+%pip install requests beautifulsoup4 sentence-transformers pandas numpy umap-learn hdbscan plotly nltk scipy
+Requirement already satisfied: requests in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (2.32.3)
+Requirement already satisfied: beautifulsoup4 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (4.13.4)
+Requirement already satisfied: sentence-transformers in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (4.1.0)
+Requirement already satisfied: pandas in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (2.2.1)
+Requirement already satisfied: numpy in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (1.24.4)
+Requirement already satisfied: umap-learn in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (0.5.7)
+Requirement already satisfied: hdbscan in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (0.8.40)
+Requirement already satisfied: plotly in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (6.0.1)
+Requirement already satisfied: nltk in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (3.9.1)
+Requirement already satisfied: scipy in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (1.10.1)
+Requirement already satisfied: charset-normalizer<4,>=2 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from requests) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from requests) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from requests) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from requests) (2025.1.31)
+Requirement already satisfied: soupsieve>1.2 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from beautifulsoup4) (2.6)
+Requirement already satisfied: typing-extensions>=4.0.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from beautifulsoup4) (4.13.2)
+Requirement already satisfied: transformers<5.0.0,>=4.41.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from sentence-transformers) (4.51.2)
+Requirement already satisfied: tqdm in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from sentence-transformers) (4.67.1)
+Requirement already satisfied: torch>=1.11.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from sentence-transformers) (2.2.2)
+Requirement already satisfied: scikit-learn in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from sentence-transformers) (1.6.1)
+Requirement already satisfied: huggingface-hub>=0.20.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from sentence-transformers) (0.30.2)
+Requirement already satisfied: Pillow in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from sentence-transformers) (11.1.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata>=2022.7 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from pandas) (2025.2)
+Requirement already satisfied: numba>=0.51.2 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from umap-learn) (0.61.2)
+Requirement already satisfied: pynndescent>=0.5 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from umap-learn) (0.5.13)
+Requirement already satisfied: joblib>=1.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from hdbscan) (1.4.2)
+Requirement already satisfied: narwhals>=1.15.1 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from plotly) (1.34.1)
+Requirement already satisfied: packaging in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from plotly) (24.2)
+Requirement already satisfied: click in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from nltk) (8.1.8)
+Requirement already satisfied: regex>=2021.8.3 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from nltk) (2024.11.6)
+Requirement already satisfied: filelock in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (3.18.0)
+Requirement already satisfied: fsspec>=2023.5.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (2025.3.2)
+Requirement already satisfied: pyyaml>=5.1 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (6.0.2)
+Requirement already satisfied: llvmlite<0.45,>=0.44.0dev0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from numba>=0.51.2->umap-learn) (0.44.0)
+Requirement already satisfied: six>=1.5 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas) (1.17.0)
+Requirement already satisfied: threadpoolctl>=3.1.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from scikit-learn->sentence-transformers) (3.6.0)
+Requirement already satisfied: sympy in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (1.13.3)
+Requirement already satisfied: networkx in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.4.2)
+Requirement already satisfied: jinja2 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.1.6)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.21.1)
+Requirement already satisfied: safetensors>=0.4.3 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.5.3)
+Requirement already satisfied: MarkupSafe>=2.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from jinja2->torch>=1.11.0->sentence-transformers) (3.0.2)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from sympy->torch>=1.11.0->sentence-transformers) (1.3.0)
+Note: you may need to restart the kernel to use updated packages.
+%pip install ipywidgets --upgrade
+Requirement already satisfied: ipywidgets in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (8.1.6)
+Requirement already satisfied: comm>=0.1.3 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipywidgets) (0.2.2)
+Requirement already satisfied: ipython>=6.1.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipywidgets) (8.35.0)
+Requirement already satisfied: traitlets>=4.3.1 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipywidgets) (5.14.3)
+Requirement already satisfied: widgetsnbextension~=4.0.14 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipywidgets) (4.0.14)
+Requirement already satisfied: jupyterlab_widgets~=3.0.14 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipywidgets) (3.0.14)
+Requirement already satisfied: decorator in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (5.2.1)
+Requirement already satisfied: exceptiongroup in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (1.2.2)
+Requirement already satisfied: jedi>=0.16 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (0.19.2)
+Requirement already satisfied: matplotlib-inline in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (0.1.7)
+Requirement already satisfied: pexpect>4.3 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (4.9.0)
+Requirement already satisfied: prompt_toolkit<3.1.0,>=3.0.41 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (3.0.50)
+Requirement already satisfied: pygments>=2.4.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (2.19.1)
+Requirement already satisfied: stack_data in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (0.6.3)
+Requirement already satisfied: typing_extensions>=4.6 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from ipython>=6.1.0->ipywidgets) (4.13.2)
+Requirement already satisfied: parso<0.9.0,>=0.8.4 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from jedi>=0.16->ipython>=6.1.0->ipywidgets) (0.8.4)
+Requirement already satisfied: ptyprocess>=0.5 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from pexpect>4.3->ipython>=6.1.0->ipywidgets) (0.7.0)
+Requirement already satisfied: wcwidth in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=6.1.0->ipywidgets) (0.2.13)
+Requirement already satisfied: executing>=1.2.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from stack_data->ipython>=6.1.0->ipywidgets) (2.2.0)
+Requirement already satisfied: asttokens>=2.1.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from stack_data->ipython>=6.1.0->ipywidgets) (2.4.1)
+Requirement already satisfied: pure-eval in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from stack_data->ipython>=6.1.0->ipywidgets) (0.2.3)
+Requirement already satisfied: six>=1.12.0 in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (from asttokens>=2.1.0->stack_data->ipython>=6.1.0->ipywidgets) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+import requests
+import pandas as pd
+import numpy as np
+import nltk
+from bs4 import BeautifulSoup
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+import umap.umap_ as umap
+import hdbscan
+import plotly.graph_objs as go
+from collections import defaultdict
+from sklearn.feature_extraction.text import CountVectorizer
+# NLTK setup
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words('english'))
+[nltk_data] Downloading package stopwords to /Users/apple/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+# Scrape title + slug + H1/H2 as embedding input
+def scrape_page(url):
+    headers = {"User-Agent": "Mozilla/5.0"}
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        title = soup.title.string.strip() if soup.title else "No Title"
+
+        # Clean slug
+        slug = url.replace("https://", "").replace("http://", "")
+        slug = slug.split("/", 1)[-1].rstrip("/").replace("-", " ")
+
+        # Get H1 and H2 tags
+        h1 = soup.find('h1')
+        h2 = soup.find('h2')
+        h1_text = h1.get_text(strip=True) if h1 else ""
+        h2_text = h2.get_text(strip=True) if h2 else ""
+
+        # Combine everything for embedding
+        text_for_embedding = f"{title} {slug} {h1_text} {h2_text}".strip()
+
+        return title, slug, text_for_embedding
+    except Exception as e:
+        print(f"⚠️ Error scraping {url}: {e}")
+        return "Error", "", ""
+# Embedding function
+def get_embedding(text, model):
+    return model.encode(text) if text else np.zeros((384,))
+# Compute semantic distances from homepage
+def compute_semantic_distances(embeddings, urls):
+    homepage_vector = embeddings[0].reshape(1, -1)
+    distances = [1 - cosine_similarity(homepage_vector, e.reshape(1, -1))[0][0] for e in embeddings]
+    return distances
+# 2D Visualization
+def visualize_clusters_2d(embeddings_2d, cluster_labels, titles, urls, distances):
+    unique_labels = set(cluster_labels)
+    data = []
+
+    for label in unique_labels:
+        indices = [i for i, lb in enumerate(cluster_labels) if lb == label]
+        x = embeddings_2d[indices, 0]
+        y = embeddings_2d[indices, 1]
+        texts = [f"Title: {titles[i]}<br>URL: {urls[i]}<br>Distance: {distances[i]:.4f}" for i in indices]
+
+        trace = go.Scatter(
+            x=x, y=y, mode='markers',
+            name=f'Cluster {label}' if label != -1 else 'Noise',
+            text=texts, hoverinfo='text',
+            marker=dict(size=10, opacity=0.8, line=dict(width=1))
+        )
+        data.append(trace)
+
+    # Highlight homepage
+    data.append(go.Scatter(
+        x=[embeddings_2d[0, 0]], y=[embeddings_2d[0, 1]],
+        mode='markers+text', text=['Homepage'], textposition='top center',
+        marker=dict(size=14, color='red', symbol='star')
+    ))
+
+    layout = go.Layout(
+        title='HDBSCAN Clustering of Page Embeddings (2D UMAP)',
+        xaxis=dict(title='UMAP 1'),
+        yaxis=dict(title='UMAP 2'),
+        legend=dict(title='Cluster')
+    )
+    fig = go.Figure(data=data, layout=layout)
+    fig.show()
+# 3D Visualization
+def visualize_clusters_3d(embeddings_3d, cluster_labels, titles, urls, distances):
+    unique_labels = set(cluster_labels)
+    data = []
+
+    for label in unique_labels:
+        indices = [i for i, lb in enumerate(cluster_labels) if lb == label]
+        x = embeddings_3d[indices, 0]
+        y = embeddings_3d[indices, 1]
+        z = embeddings_3d[indices, 2]
+        texts = [f"Title: {titles[i]}<br>URL: {urls[i]}<br>Distance: {distances[i]:.4f}" for i in indices]
+
+        trace = go.Scatter3d(
+            x=x, y=y, z=z,
+            mode='markers',
+            name=f'Cluster {label}' if label != -1 else 'Noise',
+            text=texts,
+            hoverinfo='text',
+            marker=dict(size=6, opacity=0.8)
+        )
+        data.append(trace)
+
+    # Highlight homepage
+    data.append(go.Scatter3d(
+        x=[embeddings_3d[0, 0]], y=[embeddings_3d[0, 1]], z=[embeddings_3d[0, 2]],
+        mode='markers+text', text=['Homepage'], textposition='top center',
+        marker=dict(size=10, color='red', symbol='diamond')
+    ))
+
+    layout = go.Layout(
+        title='HDBSCAN Clustering of Page Embeddings (3D UMAP)',
+        scene=dict(
+            xaxis=dict(title='UMAP 1'),
+            yaxis=dict(title='UMAP 2'),
+            zaxis=dict(title='UMAP 3')
+        ),
+        legend=dict(title='Cluster')
+    )
+    fig = go.Figure(data=data, layout=layout)
+    fig.show()
+# Cluster summarization
+def summarize_clusters(titles, labels, n=5):
+    cluster_summary = {}
+    for cluster_id in set(labels):
+        if cluster_id == -1:
+            continue  # skip noise
+        cluster_titles = [titles[i] for i in range(len(labels)) if labels[i] == cluster_id]
+        vectorizer = CountVectorizer(stop_words='english', ngram_range=(1, 2))
+        X = vectorizer.fit_transform(cluster_titles)
+        counts = X.sum(axis=0).A1
+        vocab = vectorizer.get_feature_names_out()
+        top_terms = [vocab[i] for i in counts.argsort()[::-1][:n]]
+        cluster_summary[cluster_id] = top_terms
+    return cluster_summary
+# Main
+
+def main():
+    model = SentenceTransformer('all-MiniLM-L6-v2')
+    urls_df = pd.read_csv("bulletproof_urls.csv")
+    urls = urls_df["URL"].dropna().tolist()
+
+    titles, texts, embeddings = [], [], []
+    for url in urls:
+        title, slug, cleaned_text = scrape_page(url)
+        titles.append(title)
+        texts.append(cleaned_text)
+        embeddings.append(get_embedding(cleaned_text, model))
+
+    embeddings = np.array(embeddings)
+    distances = compute_semantic_distances(embeddings, urls)
+
+    # Clean URLs for display
+    def clean_slug(url):
+        url = url.replace("https://", "").replace("http://", "")
+        slug = url.split("/", 1)[-1].rstrip("/").replace("-", " ")
+        return slug
+
+    cleaned_urls = [clean_slug(url) for url in urls]
+
+    # UMAP 2D
+    reducer_2d = umap.UMAP(n_components=2, n_neighbors=20, min_dist=0.0, metric='cosine', random_state=42)
+    reduced_2d = reducer_2d.fit_transform(embeddings)
+
+    clusterer = hdbscan.HDBSCAN(
+        min_cluster_size=15,
+        cluster_selection_epsilon=0.2,
+        min_samples=1,
+        metric='euclidean',
+        cluster_selection_method='eom'
+    )
+    cluster_labels = clusterer.fit_predict(reduced_2d)
+
+    df_out = pd.DataFrame({
+        "Cleaned URL": cleaned_urls,
+        "Original URL": urls,
+        "Title": titles,
+        "Semantic Distance": distances,
+        "Cluster": cluster_labels
+    })
+    df_out.to_csv("bulletproof_urls.csv", index=False)
+
+    # Summarize Clusters
+    summaries = summarize_clusters(titles, cluster_labels)
+    print("\nTop terms per cluster:")
+    for cluster, terms in summaries.items():
+        print(f"Cluster {cluster}: {', '.join(terms)}")
+
+    visualize_clusters_2d(reduced_2d, cluster_labels, titles, urls, distances)
+
+    # UMAP 3D
+    #reducer_3d = umap.UMAP(n_components=3, random_state=42)
+    #reduced_3d = reducer_3d.fit_transform(embeddings)
+    #visualize_clusters_3d(reduced_3d, cluster_labels, titles, urls, distances)
+
+print("Running HDBSCAN clustering with tuned parameters and summarization...")
+main()
+print("Done.")
+Running HDBSCAN clustering with tuned parameters and summarization...
+⚠️ Error scraping https://www.bulletproof.com/recipes/low-carb/vegetarian-ramen-recipe-2g3c/: HTTPSConnectionPool(host='www.bulletproof.com', port=443): Read timed out. (read timeout=10)
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+Top terms per cluster:
+Cluster 0: sleep, bulletproof, better, best, best sleep
+Cluster 1: carb, low carb, low, bulletproof, protein
+Cluster 2: gut, probiotics, gut health, health, bulletproof
+Cluster 3: keto, bulletproof, keto bulletproof, diet, best keto
+Cluster 4: cauliflower, recipe, avocado, keto, paleo
+Cluster 5: keto, bulletproof, recipe, paleo, free
+Cluster 6: bulletproof, vitamin, vitamin bulletproof, vitamin b12, b12
+Cluster 7: bulletproof, tips, home, workout, recovery
+Cluster 8: sugar, detox, bulletproof, guide, benefits
+Cluster 9: bulletproof, benefits, diet, oil, blog
+
+
+Done.
+ 
