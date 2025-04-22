@@ -1,0 +1,2 @@
+https://patents.google.com/patent/US20190347552A1/en # Generating vector representations of documents
+https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2020033805 # WEBSITE REPRESENTATION VECTOR TO GENERATE SEARCH RESULTS AND CLASSIFY WEBSITE
